@@ -114,6 +114,9 @@ func main() {
 	}
 	file, err := os.ReadFile(os.Getenv("PWD") + "/" + os.Args[1])
 	dir_name := strings.Split(os.Getenv("PWD"), "/")[len(strings.Split(os.Getenv("PWD"), "/"))-1]
+	if strings.Contains(os.Args[1], "/") {
+		dir_name = strings.Split(os.Args[1], "/")[len(strings.Split(os.Args[1], "/"))-2]
+	}
 	_, err_sol := os.ReadFile(os.Getenv("PWD") + "/" + os.Args[2] + "/solutions/" + dir_name + ".go")
 	_, err_tes := os.ReadFile(os.Getenv("PWD") + "/" + os.Args[2] + "/tests/" + dir_name + "_test/main.go")
 	if err != nil {
